@@ -1,31 +1,24 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Login from "./pages/Login";
+import Members from "./pages/Members";
+import Protected from "./components/Protected";
+import { AuthProvider } from "./components/AuthProvider";
 import './App.css';
-import FormCard from './components/FormCard';
-import { useFormik } from 'formik';
 
-function App() {
-  const {handleChange, values, handleBlur} = useFormik({
-    initialValues: {
-      name: "", 
-      email: "",
-      password: ""
-    }
-  });
-
-  console.log(values);
-
-function handleGoogleAuth(){
-  window.open("http://localhost:3000/auth/google", "_self");
-}
-  
+function App() { 
 
   return (
     <>
-      <h1>Welcome</h1>
-      <div style={{display: "flex", justifyContent: "center"}}>
-          <form >
-              <FormCard values={values} handleChange={handleChange} handleBlur={handleBlur} handleGoogleAuth={handleGoogleAuth}/>
-          </form>
-      </div>
+      <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route element={<Protected />} >
+            <Route path="/members" element={<Members />}/>
+          </Route> 
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
     </>
   )
 }

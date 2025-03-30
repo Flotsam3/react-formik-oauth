@@ -1,0 +1,37 @@
+import React from 'react';
+import FormCard from '../components/FormCard';
+import { useFormik } from 'formik';
+import { useAuth } from "../components/AuthProvider";
+import { Navigate } from 'react-router-dom';
+
+export default function Login() {
+    const { user } = useAuth();
+    const {handleChange, values, handleBlur} = useFormik({
+        initialValues: {
+          name: "", 
+          email: "",
+          password: ""
+        }
+    });
+    
+    console.log(values);
+
+    if (user) {
+      return <Navigate to="/members" />;
+    }  
+    
+    function handleGoogleAuth(){
+      window.open("http://localhost:3000/auth/google", "_self");
+    }
+
+  return (
+   <>
+    <h1>Welcome {user ? user.displayName : null}</h1>
+      <div style={{display: "flex", justifyContent: "center"}}>
+          <form >
+              <FormCard values={values} handleChange={handleChange} handleBlur={handleBlur} handleGoogleAuth={handleGoogleAuth}/>
+          </form>
+      </div>
+   </>
+  )
+}
