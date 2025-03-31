@@ -14,11 +14,7 @@ export const me = async (req, res) => {
     console.log("from me", {user:req.user});
     console.log("Session Details:", req.session);
     console.log("User from session:", req.user);
-    
     try {
-        if (!req.user) {
-            return res.status(401).json({ msg: "Not authenticated" });
-        }
         res.status(200).json({ user: req.user });
     } catch (error) {
         console.log(error);

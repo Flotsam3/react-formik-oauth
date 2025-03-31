@@ -1,6 +1,7 @@
 import { Router } from "express";
 import passport from "passport";
 import * as user from "../controllers/userController.js";
+import { isAuthenticated } from "../middleware/isAuthenticated.js";
 
 const authRouter = Router();
 
@@ -20,7 +21,7 @@ authRouter
         successRedirect: "http://localhost:5173/members", 
         failureRedirect: "http://loalhost:3000/auth/error"
     }))
-    .get("/me", user.me)
+    .get("/me", isAuthenticated, user.me)
     .get("/error", user.errorAuth)
     .get("/sucess", user.successAuth)
     .post("/logout", user.logout)

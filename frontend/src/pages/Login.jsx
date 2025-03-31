@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import FormCard from '../components/FormCard';
 import { useFormik } from 'formik';
 import { useAuth } from "../components/AuthProvider";
@@ -6,6 +6,7 @@ import { Navigate } from 'react-router-dom';
 
 export default function Login() {
     const { user } = useAuth();
+    const [register, setRegister] = useState(false);
     const {handleChange, values, handleBlur} = useFormik({
         initialValues: {
           name: "", 
@@ -33,7 +34,7 @@ export default function Login() {
     <h1>Welcome {user ? user.displayName : null}</h1>
       <div style={{display: "flex", justifyContent: "center"}}>
           <form >
-              <FormCard values={values} handleChange={handleChange} handleBlur={handleBlur} handleGoogleAuth={handleGoogleAuth} handleGithubAuth={handleGithubAuth}/>
+              <FormCard values={values} handleChange={handleChange} handleBlur={handleBlur} handleGoogleAuth={handleGoogleAuth} handleGithubAuth={handleGithubAuth} register={register} setRegister={setRegister}/>
           </form>
       </div>
    </>
