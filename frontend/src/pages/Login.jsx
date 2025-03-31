@@ -24,12 +24,16 @@ export default function Login() {
       window.open("http://localhost:3000/auth/google", "_self");
     }
 
+    function handleGithubAuth(){
+      window.open("http://localhost:3000/auth/github", "_self");
+    }
+
   return (
    <>
     <h1>Welcome {user ? user.displayName : null}</h1>
       <div style={{display: "flex", justifyContent: "center"}}>
           <form >
-              <FormCard values={values} handleChange={handleChange} handleBlur={handleBlur} handleGoogleAuth={handleGoogleAuth}/>
+              <FormCard values={values} handleChange={handleChange} handleBlur={handleBlur} handleGoogleAuth={handleGoogleAuth} handleGithubAuth={handleGithubAuth}/>
           </form>
       </div>
    </>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Card, Field, Input, Stack } from "@chakra-ui/react";
 
-export default function FormCard({values, handleBlur, handleChange, handleGoogleAuth}) {
+export default function FormCard({values, handleBlur, handleChange, handleGoogleAuth, handleGithubAuth}) {
   return (
     <Card.Root maxW="sm" bg="yellow.200" borderColor="orange.500">
         <Card.Header>
@@ -30,7 +30,7 @@ export default function FormCard({values, handleBlur, handleChange, handleGoogle
             <Button style={{width: "70%"}} variant="solid">Sign in with Email</Button>
             <p>Or sign in with:</p>
             <Button style={{width: "70%"}} variant="solid" onClick={handleGoogleAuth}>Google</Button>
-            <Button style={{width: "70%"}} variant="solid">Github</Button>
+            <Button style={{width: "70%"}} variant="solid" onClick={handleGithubAuth}>Github</Button>
         </Card.Footer>
   </Card.Root>
   )

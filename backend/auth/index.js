@@ -1,6 +1,6 @@
 import passport from 'passport';
 import './passportGoogle.js';
-// import './passportGithub.js'; 
+import './passportGithub.js'; 
 import User from '../models/User.js';
 
 // Is called after successful authentication

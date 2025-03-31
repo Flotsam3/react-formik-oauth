@@ -9,11 +9,15 @@ passport.use(new GoogleStrategy({
     accessType: "offline",
     prompt: "consent"
   },
-  async (accessToken, refreshToken, profile, cb) => {
+  async (accessToken, refreshToken, profile, done) => {
+    console.log("google profile", profile);
+    
     try {
-      let user = await User.findOne({ googleId: profile.id });
-
+      let user = await User.findOne({ email: profile.emails[0].value });
+      console.log({user});
       if (!user) {
+        console.log("creating new user");
+        
         user = await User.create({
           googleId: profile.id,
           name: profile.displayName,
@@ -22,10 +26,10 @@ passport.use(new GoogleStrategy({
         });
       }
 
-      return cb(null, user);
+      return done(null, user);
     } catch (err) {
       console.error("Error during authentication", err);
-      return cb(err, null);
+      return done(err, null);
     }
   }
 ));
