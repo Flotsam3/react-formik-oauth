@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useAuth } from "../components/AuthProvider";
 import {Avatar, Button, Card, HStack, Stack, Strong, Text, Flex} from "@chakra-ui/react";
 import { LuCheck, LuX } from "react-icons/lu";
@@ -7,6 +7,10 @@ import { useNavigate } from 'react-router-dom';
 export default function Members() {
     const navigate = useNavigate();
     const { user, logout, setUser } = useAuth();
+
+    useEffect(()=>{
+        console.log("members", {user});
+    },[user])
 
     async function handleLogout(){
         const response = await fetch("http://localhost:3000/auth/logout", {
@@ -24,19 +28,19 @@ export default function Members() {
 
   return (
     <Flex justify="center" m="5">
-        <Card.Root width="320px">
+        <Card.Root width="420px">
             <Card.Body>
                 <HStack mb="6" gap="3">
                     <Avatar.Root>
-                        <Avatar.Image src="https://images.unsplash.com/photo-1511806754518-53bada35f930" />
-                        <Avatar.Fallback name="Nate Foss" />
+                        <Avatar.Image src={user.profileImage} />
+                        <Avatar.Fallback name={user.name} />
                     </Avatar.Root>
                     <Stack gap="0">
                         <Text fontWeight="semibold" textStyle="sm">
-                        {user?.displayName}
+                        {user?.name}
                         </Text>
                         <Text color="fg.muted" textStyle="sm">
-                        @{user?.displayName}
+                        @{user?.email}
                         </Text>
                     </Stack>
                 </HStack>
