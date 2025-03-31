@@ -2,8 +2,9 @@ import {Schema, model} from "mongoose";
 import bcrypt from "bcrypt";
 
 const userSchema = new Schema({
-    googleId: { type: String, unique: true },
-    githubId: { type: String, unique: true },
+    // sparse:true to allow null values or non-existing fields yet checking for uniqueness
+    googleId: { type: String, unique: true, sparse:true },
+    githubId: { type: String, unique: true, sparse:true },
     name: { type: String },
     email: { type: String, unique: true },
     profileImage: { type: String },
