@@ -6,7 +6,7 @@ import { Navigate } from 'react-router-dom';
 
 export default function Login() {
     const { user } = useAuth();
-    const [register, setRegister] = useState(false);
+    const [register, setRegister] = useState(true);
     const {handleChange, values, handleBlur} = useFormik({
         initialValues: {
           name: "", 

@@ -2,8 +2,18 @@ import User from "../models/User.js";
 
 export const createUser = async (req, res) => {
     try {
-        const user = User.create(req.body);
+        const user = await User.create(req.body);
         res.status(201).json({msg: "User created!"}, user)
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({msg: "Server error!"});
+    }
+}
+
+export const signUp = async (req, res) => {
+    try {
+        const user = await User.create(req.body);
+        res.status(201).json({msg: "New user created via email!"}, user);
     } catch (error) {
         console.log(error);
         res.status(500).json({msg: "Server error!"});

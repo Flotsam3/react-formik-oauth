@@ -5,6 +5,7 @@ import passport from "./auth/index.js";
 import cors from "cors";
 import "./auth/passportGoogle.js";
 import authRouter from "./routes/authRouter.js";
+import userRouter from "./routes/userRouter.js";
 
 connectDB();
 
@@ -30,6 +31,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/auth", authRouter);
+app.use("/users", userRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is listening on port: ${PORT}`)

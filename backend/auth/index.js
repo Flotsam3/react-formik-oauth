@@ -1,7 +1,8 @@
-import passport from 'passport';
-import './passportGoogle.js';
-import './passportGithub.js'; 
-import User from '../models/User.js';
+import passport from "passport";
+import "./passportGoogle.js";
+import "./passportGithub.js"; 
+import "./passportLocal.js";
+import User from "../models/User.js";
 
 // Is called after successful authentication
 passport.serializeUser((user, done)=>{
