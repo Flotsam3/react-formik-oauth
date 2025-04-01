@@ -6,7 +6,7 @@ import User from "../models/User.js";
 
 // Is called after successful authentication
 passport.serializeUser((user, done)=>{
-    console.log({user});
+    console.log("Serialized user:", user);
     done(null, user.id);
 });
 
@@ -14,7 +14,7 @@ passport.serializeUser((user, done)=>{
 passport.deserializeUser(async (id, done)=>{
   try {
     const user = await User.findById(id);
-    console.log("Deserializing user:", user);  // Added log for debugging
+    console.log("Deserializing user:", user);
     done(null, user); // makes the user available under req.user
   } catch (err) {
     done(err, null);
