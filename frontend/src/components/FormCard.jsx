@@ -14,15 +14,15 @@ export default function FormCard({values, handleBlur, handleChange, handleGoogle
             <Stack gap="4" w="full">
                 {!register && <Field.Root>
                     <Field.Label>Name</Field.Label>
-                    <Input type='text' name='name' onChange={handleChange} value={values.name} onBlur={handleBlur} borderColor="orange.500" outline="none"/>
+                    <Input type='text' name='name' autoComplete='given-name' onChange={handleChange} value={values.name} onBlur={handleBlur} borderColor="orange.500" outline="none"/>
                 </Field.Root>}
                 <Field.Root>
                     <Field.Label>Email</Field.Label>
-                    <Input type='email' name='email' onChange={handleChange} value={values.email} onBlur={handleBlur} borderColor="orange.500" outline="none"/>
+                    <Input type='email' name='email' autoComplete='email' onChange={handleChange} value={values.email} onBlur={handleBlur} borderColor="orange.500" outline="none"/>
                 </Field.Root>
                 <Field.Root>
                     <Field.Label>Password</Field.Label>
-                    <Input type='password' name='password' onChange={handleChange} value={values.password} onBlur={handleBlur} borderColor="orange.500" outline="none"/>
+                    <Input type='password' name='password' autoComplete="current-password" onChange={handleChange} value={values.password} onBlur={handleBlur} borderColor="orange.500" outline="none"/>
                 </Field.Root>
             </Stack>
         </Card.Body>
