@@ -33,7 +33,7 @@ export default function Members() {
                 <HStack mb="6" gap="3">
                     <Avatar.Root>
                         <Avatar.Image src={user.profileImage} />
-                        <Avatar.Fallback name={user.name} />
+                        <Avatar.Fallback name={user?.name} />
                     </Avatar.Root>
                     <Stack gap="0">
                         <Text fontWeight="semibold" textStyle="sm">
@@ -45,8 +45,8 @@ export default function Members() {
                     </Stack>
                 </HStack>
                 <Card.Description>
-                    <Strong color="fg">{user?.displayName} </Strong>
-                    Come back soon!
+                    <Strong color="fg">{user?.name}, </Strong>
+                    come back soon!
                 </Card.Description>
             </Card.Body>
             <Card.Footer>

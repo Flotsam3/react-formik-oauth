@@ -15,8 +15,6 @@ export default function Login() {
         }
     });
     
-    console.log(values);
-
     if (user) {
       return <Navigate to="/members" />;
     }  
@@ -43,7 +41,7 @@ export default function Login() {
           if (response.ok){
             const user = await response.json();
             console.log("registered user", user);
-            setRegister(false);
+            setRegister(true);
           }
 
         } else {
@@ -57,9 +55,9 @@ export default function Login() {
           });
 
           if (response.ok){
-            const user = await response.json();
-            console.log("Logged in user", user);
-            setUser(user);
+            const data = await response.json();
+            console.log("Logged in user", data);
+            setUser(data.user);
           }
         }
       } catch (error) {
